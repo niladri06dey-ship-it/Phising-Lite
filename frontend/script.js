@@ -1,49 +1,40 @@
-// -------------------- PHISHING CHECK --------------------
+// --------- PHISHING CHECK ----------
 async function checkPhishing() {
     const url = document.getElementById("urlInput").value;
     const resultDiv = document.getElementById("result");
     const progressBar = document.getElementById("progressBar");
 
     if (!url) {
-        resultDiv.innerText = "⚠️ Please enter a URL";
-        resultDiv.className = "result warning";
+        resultDiv.innerText = "⚠️ Enter a URL";
         return;
     }
 
-    resultDiv.innerText = "Scanning URL... ⚡";
+    resultDiv.innerText = "Scanning... ⚡";
     progressBar.style.width = "20%";
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/check", {
+        const res = await fetch("http://127.0.0.1:5000/check", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ url: url })
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({url})
         });
 
-        const data = await response.json();
+        const data = await res.json();
 
         resultDiv.innerText = data.result;
-        resultDiv.className = "result " + data.class;
 
-        // Progress based on result
-        let percent = 0;
-
-        if (data.class === "safe") percent = 90;
-        else if (data.class === "warning") percent = 50;
-        else percent = 20;
+        let percent = data.class === "safe" ? 90 :
+                      data.class === "warning" ? 50 : 20;
 
         progressBar.style.width = percent + "%";
 
-    } catch (error) {
+    } catch {
         resultDiv.innerText = "❌ Server not running";
-        resultDiv.className = "result danger";
         progressBar.style.width = "0%";
     }
 }
 
-// -------------------- PARTICLE BACKGROUND --------------------
+// --------- PARTICLES ----------
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -54,37 +45,36 @@ let particles = [];
 
 for (let i = 0; i < 80; i++) {
     particles.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        radius: Math.random() * 2,
-        dx: Math.random() - 0.5,
-        dy: Math.random() - 0.5
+        x: Math.random()*canvas.width,
+        y: Math.random()*canvas.height,
+        r: Math.random()*2,
+        dx: Math.random()-0.5,
+        dy: Math.random()-0.5
     });
 }
 
-function animateParticles() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+function animate() {
+    ctx.clearRect(0,0,canvas.width,canvas.height);
 
-    particles.forEach(p => {
+    particles.forEach(p=>{
         ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = "#38bdf8";
+        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+        ctx.fillStyle="#38bdf8";
         ctx.fill();
 
-        p.x += p.dx;
-        p.y += p.dy;
+        p.x+=p.dx;
+        p.y+=p.dy;
 
-        if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
-        if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+        if(p.x<0||p.x>canvas.width) p.dx*=-1;
+        if(p.y<0||p.y>canvas.height) p.dy*=-1;
     });
 
-    requestAnimationFrame(animateParticles);
+    requestAnimationFrame(animate);
 }
 
-animateParticles();
+animate();
 
-// -------------------- RESPONSIVE CANVAS --------------------
-window.addEventListener("resize", () => {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+window.addEventListener("resize",()=>{
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
 });

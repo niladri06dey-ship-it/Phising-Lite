@@ -8,9 +8,9 @@
 </head>
 
 <body>
-
+<canvas id="bgCanvas"></canvas>
 <div class="container">
-    <h1>🛡️ PhishNet Lite</h1>
+    <h1 class="title">🛡️ PhishNet Lite</h1>
     <p>Real-Time Phishing Detector</p>
 
     <input type="text" id="urlInput" placeholder="Enter URL here...">
@@ -19,6 +19,12 @@
     <button onclick="checkPhishing()">Check</button>
 
     <div class="result" id="result"></div>
+    <div class="progress">
+    <div id="progressBar"></div>
+    </div>
+    <div id="aiStatus" class="ai-status">
+    🤖 AI Engine: ACTIVE
+    </div>
 </div>
 
 <script src="script.js"></script>

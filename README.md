@@ -41,6 +41,7 @@ Final Decision (Safe / Phishing)
 
 ## 📂 Project Structure
 
+
 phishnet-lite/
 │
 ├── frontend/
@@ -65,13 +66,13 @@ phishnet-lite/
 cd backend
 pip install Flask Flask-Cors python-dotenv requests
 python app.py
+
 Server runs at:
 
 http://127.0.0.1:5000
 🔑 Environment Variables (.env)
 GOOGLE_API_KEY=your_google_api_key
 VT_API_KEY=your_virustotal_api_key
-
 🌐 Frontend
 Open frontend/index.html in browser
 OR
@@ -101,7 +102,6 @@ Phishing
   "label": "Phishing",
   "source": "Rule Engine / Google Safe Browsing / VirusTotal"
 }
-
 🧪 Testing URLs
 Safe
 https://google.com
@@ -123,20 +123,13 @@ Free API rate limits
 🤖 Machine Learning detection
 🌐 Browser extension
 ☁️ Cloud deployment
-
-
 👨‍💻 Author
 
+Niladri Dey
 Mayukh Pal
-Niladri dey
 Badhon Banerjee
-
 
 
 🏆 Pitch Line
 
 "PhishNet Lite uses a multi-engine detection system combining heuristic analysis and real-time threat intelligence APIs."
-
-
----
-

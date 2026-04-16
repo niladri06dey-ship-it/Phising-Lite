@@ -1,9 +1,7 @@
-// -------------------- CONFIG --------------------
-// 🔴 IMPORTANT: Replace this with your Render backend URL
-const API_URL = "https://your-backend-name.onrender.com/check";
+// 🔴 CHANGE THIS TO YOUR RENDER URL
+const API_URL = "https://phishnet-lite.onrender.com/check";
 
-
-// -------------------- PHISHING CHECK --------------------
+// ---------------- PHISHING CHECK ----------------
 async function checkPhishing() {
     const url = document.getElementById("urlInput").value;
     const resultDiv = document.getElementById("result");
@@ -16,7 +14,7 @@ async function checkPhishing() {
         return;
     }
 
-    resultDiv.innerText = "Scanning URL... ⚡";
+    resultDiv.innerText = "Scanning... ⚡";
     resultDiv.className = "result";
     progressBar.style.width = "20%";
 
@@ -35,18 +33,14 @@ async function checkPhishing() {
 
         const data = await response.json();
 
-        // Result
         resultDiv.innerText = data.result;
         resultDiv.className = "result " + data.label.toLowerCase();
 
-        // Source
         if (sourceDiv) {
-            sourceDiv.innerText = "Detected by: " + (data.source || "System");
+            sourceDiv.innerText = "Detected by: " + data.source;
         }
 
-        // Progress
-        let percent = data.label === "Safe" ? 90 : 20;
-        progressBar.style.width = percent + "%";
+        progressBar.style.width = data.label === "Safe" ? "90%" : "20%";
 
     } catch (error) {
         resultDiv.innerText = "❌ Server not reachable";
@@ -55,7 +49,7 @@ async function checkPhishing() {
     }
 }
 
-// -------------------- PARTICLE BACKGROUND --------------------
+// ---------------- PARTICLE BACKGROUND ----------------
 const canvas = document.getElementById("bgCanvas");
 const ctx = canvas.getContext("2d");
 
@@ -95,7 +89,7 @@ function animateParticles() {
 
 animateParticles();
 
-// -------------------- RESPONSIVE CANVAS --------------------
+// Responsive
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;

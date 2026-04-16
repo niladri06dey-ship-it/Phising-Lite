@@ -1,9 +1,9 @@
 // 🔴 BACKEND API
-const API_URL = "https://phishnet-lite.onrender.com/check";
+const API_URL = "https://web-production-c7a81.up.railway.app/check";
 
 // 🔥 Pre-warm backend (reduces delay)
 window.addEventListener("load", () => {
-    fetch("https://phishnet-lite.onrender.com").catch(() => {});
+    fetch("https://web-production-c7a81.up.railway.app").catch(() => {});
 });
 
 // -------------------- PHISHING CHECK --------------------

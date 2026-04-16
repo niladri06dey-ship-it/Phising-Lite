@@ -1,3 +1,8 @@
+// -------------------- CONFIG --------------------
+// 🔴 IMPORTANT: Replace this with your Render backend URL
+const API_URL = "https://your-backend-name.onrender.com/check";
+
+
 // -------------------- PHISHING CHECK --------------------
 async function checkPhishing() {
     const url = document.getElementById("urlInput").value;
@@ -16,7 +21,7 @@ async function checkPhishing() {
     progressBar.style.width = "20%";
 
     try {
-        const response = await fetch("http://127.0.0.1:5000/check", {
+        const response = await fetch(API_URL, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -30,22 +35,22 @@ async function checkPhishing() {
 
         const data = await response.json();
 
-        // Show result
+        // Result
         resultDiv.innerText = data.result;
         resultDiv.className = "result " + data.label.toLowerCase();
 
-        // Show source
+        // Source
         if (sourceDiv) {
             sourceDiv.innerText = "Detected by: " + (data.source || "System");
         }
 
-        // Progress bar logic
+        // Progress
         let percent = data.label === "Safe" ? 90 : 20;
         progressBar.style.width = percent + "%";
 
     } catch (error) {
-        resultDiv.innerText = "❌ Server not running";
-        resultDiv.className = "result danger";
+        resultDiv.innerText = "❌ Server not reachable";
+        resultDiv.className = "result phishing";
         progressBar.style.width = "0%";
     }
 }
@@ -90,7 +95,7 @@ function animateParticles() {
 
 animateParticles();
 
-// Responsive canvas
+// -------------------- RESPONSIVE CANVAS --------------------
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;

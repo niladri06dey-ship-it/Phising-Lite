@@ -1,138 +1,143 @@
+/* Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Background */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: #020617;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
     color: white;
+    text-align: center;
+
+    background: url('assets/background.jpg') no-repeat center center/cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Dark overlay */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
 }
 
 /* Canvas */
 #bgCanvas {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
 }
 
 /* Container */
 .container {
-    background: rgba(15, 23, 42, 0.7);
-    backdrop-filter: blur(15px);
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
 
-    padding: 40px;
-    border-radius: 20px;
-    text-align: center;
-
-    width: 500px;
-    max-width: 90%;
-
-    border: 1px solid rgba(56, 189, 248, 0.3);
-
-    box-shadow:
-        0 0 25px rgba(56, 189, 248, 0.4),
-        0 0 80px rgba(56, 189, 248, 0.15);
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
 }
 
 /* Title */
 .title {
-    color: #38bdf8;
-    text-shadow: 0 0 20px #38bdf8;
+    font-size: 2rem;
+    margin-bottom: 10px;
 }
 
+/* Subtitle */
 .subtitle {
-    margin: 10px 0;
-    color: #38bdf8;
-    font-size: 14px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #00ffcc;
+}
+
+/* Instruction */
+.instruction {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
 }
 
 /* Input */
 input {
     width: 100%;
-    padding: 14px;
-    border-radius: 10px;
+    padding: 10px;
+    border-radius: 8px;
     border: none;
-    margin: 15px 0;
-    outline: none;
+    margin-bottom: 15px;
 }
 
 /* Button */
 button {
-    padding: 14px 30px;
+    padding: 10px 20px;
     border: none;
-    border-radius: 10px;
-    background: #38bdf8;
-    cursor: pointer;
+    border-radius: 8px;
+    background: #00ffcc;
+    color: black;
     font-weight: bold;
-    box-shadow: 0 0 20px #38bdf8;
-    transition: 0.3s;
+    cursor: pointer;
 }
 
 button:hover {
-    transform: scale(1.08);
-    box-shadow: 0 0 40px #38bdf8;
+    background: #00ccaa;
 }
 
 /* Result */
 .result {
-    margin-top: 20px;
-    font-size: 18px;
+    margin-top: 15px;
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
-/* Colors */
+/* Status colors */
+.checking {
+    color: white;
+}
+
 .safe {
-    color: #22c55e;
-    text-shadow: 0 0 10px #22c55e;
+    color: limegreen;
 }
 
 .phishing {
-    color: #ef4444;
-    text-shadow: 0 0 10px #ef4444;
+    color: red;
 }
 
-.warning {
-    color: #facc15;
+/* Source */
+.source {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #ccc;
 }
 
-/* Progress */
+/* Progress bar */
 .progress {
-    height: 8px;
-    background: #1e293b;
+    width: 100%;
+    height: 5px;
+    background: #333;
     margin-top: 15px;
-    border-radius: 10px;
+    border-radius: 5px;
     overflow: hidden;
 }
 
 #progressBar {
-    height: 100%;
     width: 0%;
-    background: #38bdf8;
-    transition: 0.4s;
+    height: 100%;
+    background: #00ffcc;
+    transition: width 0.4s ease;
 }
 
-/* Source */
-#source {
-    margin-top: 10px;
-    font-size: 12px;
-    color: #94a3b8;
-}
-
-/* AI Status */
+/* AI status */
 .ai-status {
-    margin-top: 10px;
-    color: #38bdf8;
-    animation: blink 1.5s infinite;
-}
-
-@keyframes blink {
-    50% { opacity: 1; }
-    0%,100% { opacity: 0.5; }
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #00ffcc;
 }

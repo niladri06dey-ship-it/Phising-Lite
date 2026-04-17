@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhishNet Lite</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.jpeg" type="image/jpeg">
+</head>
+
+<body>
+
+<canvas id="bgCanvas"></canvas>
+
+<div class="container">
+    <h1 class="title">🛡️ PhishNet Lite</h1>
+    
+    <p class="subtitle">Real-Time Phishing Detector</p>
+
+    <p class="instruction">
+        Paste a URL below to check whether the website is safe or a phishing attempt.
+    </p>
+
+    <input type="text" id="urlInput" placeholder="Enter URL here...">
+
+    <button onclick="checkPhishing()">Check</button>
+
+    <div class="result" id="result"></div>
+
+    <div id="source" class="source"></div>
+
+    <div class="progress">
+        <div id="progressBar"></div>
+    </div>
+
+    <div id="aiStatus" class="ai-status">
+        🤖 AI Engine: ACTIVE
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

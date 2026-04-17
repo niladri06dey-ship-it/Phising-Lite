@@ -1,0 +1,143 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+    text-align: center;
+
+    background: url('assets/background.jpg') no-repeat center center/cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Dark overlay */
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Canvas */
+#bgCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+/* Container */
+.container {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 500px;
+    margin: auto;
+    padding: 30px;
+
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+}
+
+/* Title */
+.title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+/* Subtitle */
+.subtitle {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #00ffcc;
+}
+
+/* Instruction */
+.instruction {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+
+/* Input */
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 15px;
+}
+
+/* Button */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: #00ffcc;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #00ccaa;
+}
+
+/* Result */
+.result {
+    margin-top: 15px;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Status colors */
+.checking {
+    color: white;
+}
+
+.safe {
+    color: limegreen;
+}
+
+.phishing {
+    color: red;
+}
+
+/* Source */
+.source {
+    margin-top: 10px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+/* Progress bar */
+.progress {
+    width: 100%;
+    height: 5px;
+    background: #333;
+    margin-top: 15px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#progressBar {
+    width: 0%;
+    height: 100%;
+    background: #00ffcc;
+    transition: width 0.4s ease;
+}
+
+/* AI status */
+.ai-status {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #00ffcc;
+}

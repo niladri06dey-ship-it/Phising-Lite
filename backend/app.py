@@ -13,7 +13,7 @@ except:
 
 load_dotenv()
 
-app = Flask(__name__, static_folder='../frontend')
+app = Flask(__name__, static_folder='static')
 CORS(app)
 
 # ---------------- ENV ----------------
@@ -31,11 +31,11 @@ except:
 # ---------------- HOME ----------------
 @app.route('/')
 def home():
-    return send_from_directory('../frontend', 'index.html')
+    return send_from_directory('static', 'index.html')
 
 @app.route('/<path:path>')
 def static_files(path):
-    return send_from_directory('../frontend', path)
+    return send_from_directory('static', path)
 
 # ---------------- RULE ENGINE ----------------
 def rule_based_detection(url):

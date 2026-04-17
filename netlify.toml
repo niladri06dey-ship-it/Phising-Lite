@@ -1,0 +1,8 @@
+[build]
+  command = "echo 'No build command needed'"
+  publish = "frontend"
+
+[[redirects]]
+  from = "/check"
+  to = "https://web-production-c7a81.up.railway.app/check"
+  status = 200

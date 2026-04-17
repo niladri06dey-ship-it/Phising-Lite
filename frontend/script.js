@@ -1,9 +1,9 @@
-// 🔴 BACKEND API (Same domain)
-const API_URL = "/check";
+// 🔴 BACKEND API (Railway)
+const API_URL = "https://web-production-c7a81.up.railway.app/check";
 
 // 🔥 PRE-WARM BACKEND
 window.addEventListener("load", () => {
-    fetch("/")
+    fetch("https://web-production-c7a81.up.railway.app")
         .then(() => console.log("Server warmed"))
         .catch(() => console.log("Warm failed"));
 });

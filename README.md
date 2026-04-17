@@ -124,6 +124,8 @@ cp .env.example .env
 # GOOGLE_API_KEY=your_google_safe_browsing_api_key
 ```
 
+> **⚠️ Security Warning:** Never commit `.env` files to version control. They contain sensitive API keys and database credentials. The `.gitignore` file is configured to exclude `.env` files.
+
 ### 3. Run Locally
 
 ```bash
